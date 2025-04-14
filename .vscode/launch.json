@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"configurations": [
+		{
+			"name": "gdb-openocd",
+			"type": "gdb",
+			"request": "attach",
+			"executable": "makefile-blink.elf",
+			"remote": true,
+			"target": ":3333",
+			"cwd": "${workspaceRoot}",
+			"gdbpath": "${env:HOME}/Downloads/MRS_Toolchain_Linux_x64_V210/RISC-V Embedded GCC/bin/riscv-none-embed-gdb",
+			"autorun": [
+				"set mem inaccessible-by-default off",
+				"set architecture riscv:rv32",
+				"set remotetimeout unlimited",
+				"monitor reset halt",
+				"load"
+			],
+            "stopAtEntry": true
+		}
+	]
+}
