@@ -2,8 +2,8 @@
 PROJECT = makefile-blink
 
 # Path you your toolchain and openocd installation, leave empty if already in system PATH
-TOOLCHAIN_ROOT = "$(HOME)/Downloads/MRS_Toolchain_Linux_x64_V210/RISC-V Embedded GCC/bin/"
-OPENOCD_ROOT   = "$(HOME)/Downloads/MRS_Toolchain_Linux_x64_V210/OpenOCD/OpenOCD/bin/"
+TOOLCHAIN_ROOT := "/opt/wch/mounriver-studio-toolchain-riscv-gcc/bin/"
+OPENOCD_ROOT   := "/opt/wch/mounriver-studio-toolchain-openocd/bin/"
 
 ###############################################################################
 
