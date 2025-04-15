@@ -24,16 +24,29 @@ SRC_FILES = $(wildcard $(SRC_DIR)*.c)
 ASM_FILES += $(VENDOR_SRC_DIR)Startup/startup_CH592.S
 SRC_FILES += $(VENDOR_SRC_DIR)RVMSIS/core_riscv.c
 SRC_FILES += $(wildcard $(VENDOR_SRC_DIR)StdPeriphDriver/*.c) 
+# BLE sources
+ASM_FILES += $(VENDOR_SRC_DIR)../BLE/LIB/ble_task_scheduler.S
+SRC_FILES += $(wildcard $(VENDOR_SRC_DIR)../BLE/HAL/*.c)
+SRC_FILES += $(VENDOR_SRC_DIR)../BLE/Peripheral/APP/peripheral.c
+SRC_FILES += $(VENDOR_SRC_DIR)../BLE/Peripheral/Profile/devinfoservice.c
+SRC_FILES += $(VENDOR_SRC_DIR)../BLE/Peripheral/Profile/gattprofile.c
 
 # Vendor includes
 INCLUDES += -I$(VENDOR_SRC_DIR)StdPeriphDriver/inc/
 INCLUDES += -I$(VENDOR_SRC_DIR)RVMSIS/
+# BLE includes
+INCLUDES += -I$(VENDOR_SRC_DIR)../BLE/HAL/include/
+INCLUDES += -I$(VENDOR_SRC_DIR)../BLE/LIB/
+INCLUDES += -I$(VENDOR_SRC_DIR)../BLE/Peripheral/Profile/include/
+INCLUDES += -I$(VENDOR_SRC_DIR)../BLE/Peripheral/APP/include/
 
 # Vendor Link Script
 LD_SCRIPT = $(VENDOR_SRC_DIR)Ld/Link.ld
 
 # Vendor Libraries
 LIBS = -L$(VENDOR_SRC_DIR)/StdPeriphDriver -lISP592
+# BLE library
+LIBS += $(VENDOR_SRC_DIR)../BLE/LIB/LIBCH59xBLE.a
 
 # Compiler Flags
 CFLAGS  = -march=rv32imac -mabi=ilp32 -msmall-data-limit=8 -mno-save-restore -Os
